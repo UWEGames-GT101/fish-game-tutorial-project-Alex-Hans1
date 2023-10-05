@@ -62,7 +62,13 @@ class MyASGEGame(pyasge.ASGEGame):
             return False
 
     def initFish(self) -> bool:
-        pass
+        if self.fish.loadTexture("/data/images/kenney_fishpack/fishTile_073.png"):
+            self.fish.z_order = 1
+            self.fish.scale = 1
+            self.fish.x = 300
+            self.fish.y = 300
+            return True
+        return False
 
     def initScoreboard(self) -> None:
         pass
@@ -132,17 +138,17 @@ class MyASGEGame(pyasge.ASGEGame):
         ``frame_time`` is essential to ensure consistent performance.
         @param game_time: The tick and frame deltas.
         """
-
+        self.data.renderer.render(self.data.background)
         if self.menu:
             # render the menu here
-            self.data.renderer.render(self.data.background)
+
             self.data.renderer.render(self.menu_text)
 
             self.data.renderer.render(self.play_option)
             self.data.renderer.render(self.exit_option)
         else:
             # render the game here
-            pass
+            self.data.renderer.render(self.fish)
 
 
 def main():
