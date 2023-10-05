@@ -55,7 +55,11 @@ class MyASGEGame(pyasge.ASGEGame):
         self.initFish()
 
     def initBackground(self) -> bool:
-        pass
+        if self.data.background.loadTexture("/data/images/background.png"):
+            self.data.background.z_order = -100
+            return True
+        else:
+            return False
 
     def initFish(self) -> bool:
         pass
@@ -94,7 +98,7 @@ class MyASGEGame(pyasge.ASGEGame):
 
         if self.menu:
             # render the menu here
-            pass
+            self.data.renderer.render(self.data.background)
         else:
             # render the game here
             pass
